@@ -26,7 +26,7 @@
     "start": "react-scripts start",
     "transpile": "babel src --out-dir amplify/backend/function/amplifyssr/src/client --copy-files",
     "build": "npm run transpile && react-scripts build && npm run copy",
-    "copy": "copy build\\index.html amplify\\backend\\function\\amplifyssr\\src\\client",
+    "copy": "cp build/index.html amplify/backend/function/amplifyssr/src/client",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
