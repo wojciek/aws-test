@@ -1,0 +1,49 @@
+{
+    "paths": [
+        {
+            "name": "/ssr",
+            "lambdaFunction": "amplifyssr",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/ssr"
+        }
+    ],
+    "resourceName": "amplifyssr",
+    "apiName": "amplifyssr",
+    "functionArns": [
+        {
+            "lambdaFunction": "amplifyssr"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-awstest-dev-114356-authRole",
+        "unAuthRoleName": "amplify-awstest-dev-114356-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "amplifyssr",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
