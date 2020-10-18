@@ -1,9 +1,16 @@
+.nav {
+    span {
+        border: 1px solid grey;
+        cursor: pointer;
+    }
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 

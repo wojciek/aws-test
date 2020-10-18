@@ -1,8 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './style.scss'
+import { MainContainer } from './app/pages/main';
+import { ContactContainer } from './app/pages/contact';
+
+const pageType: 'Main' | 'Contact' = 'Main';
 
 function App() {
+  const [state, setState] = useState(pageType);
   return (
     <div className="App">
       <header className="App-header">
@@ -10,6 +16,14 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <div className="nav">
+          <span onClick={() => setState("Main")}>Main</span>{" "}
+          <span onClick={() => setState("Contact")}>Contact</span>
+        </div>
+        <div className="container">
+          {state === "Main" && <MainContainer />}
+          {state === "Contact" && <ContactContainer />}
+        </div>
         <a
           className="App-link"
           href="https://reactjs.org"
