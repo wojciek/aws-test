@@ -4,6 +4,9 @@ import { useState } from 'react';
 import './style.scss'
 import { MainContainer } from './app/pages/main';
 import { ContactContainer } from './app/pages/contact';
+import awsExports from "./aws-exports";
+import Amplify from "aws-amplify";
+Amplify.configure({ ...awsExports, ssr: true });
 
 const pageType: 'Main' | 'Contact' = 'Main';
 
@@ -11,28 +14,33 @@ function App() {
   const [state, setState] = useState(pageType);
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="nav">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <div className="nav">
-          <span onClick={() => setState("Main")}>Main</span>{" "}
-          <span onClick={() => setState("Contact")}>Contact</span>
-        </div>
-        <div className="container">
-          {state === "Main" && <MainContainer />}
-          {state === "Contact" && <ContactContainer />}
-        </div>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <span
+          onClick={() => setState("Main")}
+          className={state === "Main" ? "active" : "inactive"}
         >
-          Learn React
-        </a>
-      </header>
+          Main
+        </span>{" "}
+        <span
+          onClick={() => setState("Contact")}
+          className={state === "Contact" ? "active" : "inactive"}
+        >
+          Contact
+        </span>
+      </div>
+      <div className="container">
+        {state === "Main" && <MainContainer />}
+        {state === "Contact" && <ContactContainer />}
+      </div>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Learn React
+      </a>
     </div>
   );
 }
